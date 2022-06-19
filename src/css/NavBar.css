@@ -1,0 +1,17 @@
+.nav_wrap {
+    padding: 20px;
+    display: flex;
+}
+
+.nav{
+    margin: auto;
+    padding-left: 5px;
+}
+.links{
+    margin: 1em;
+}
+.nav_button{
+    position: fixed;
+    margin: 1em;
+    right: 5%;
+}

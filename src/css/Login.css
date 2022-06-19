@@ -1,0 +1,19 @@
+.login_screen{
+    height: 100vw;
+    margin: auto;
+    color: white;
+    background-image: url('https://wallpapercave.com/wp/wp2458494.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    
+}
+label{
+    margin: 5px;
+}
+
+input{
+    margin: 5px;
+}
+form{
+    margin: auto;
+}
