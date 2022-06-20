@@ -28,8 +28,9 @@ function Login({setIsLoggedIn}) {
 
     return (
         <div className="login_screen">
+                <h1>Fansite SAO</h1>
+                <h3>The Sword Art Online Fansite</h3>
             <form onSubmit={handleSubmit}>
-                <h1>Login</h1>
                 <label>
                     Username
                 <input

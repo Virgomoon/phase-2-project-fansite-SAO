@@ -15,7 +15,7 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar setIsLoggedIn={setIsLoggedIn} />
+      <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       <Routes>
         <Route exact path="/" element={<Home isLoggedIn={isLoggedIn} />} />
         <Route path='/Anime' element={<Anime />} />
