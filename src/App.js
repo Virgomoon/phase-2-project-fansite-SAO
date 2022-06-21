@@ -14,12 +14,19 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const [searchData, setSearchData] = useState([])
+  const [firstChar, setFirstChar] = useState([])
     
     useEffect(() =>{
         fetch("https://api.jikan.moe/v4/anime?q=sword art online&sfw")
         .then((res)=> res.json())
-        .then((data)=> setSearchData(data.data), console.log(searchData))
+        .then((data)=> setSearchData(data.data))
     }, []);
+
+    useEffect(() =>{
+      fetch("https://api.jikan.moe/v4/anime/11757/characters")
+      .then((res)=> res.json())
+      .then((data)=> setFirstChar(data.data))
+  }, []);
 
   return (
     <div className="App">
@@ -27,7 +34,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home isLoggedIn={isLoggedIn} 
         searchData={searchData} />} />
-        <Route path='/Characters' element={<Characters />} />
+        <Route path='/Characters' element={<Characters firstChar={firstChar} />} />
         <Route path='/Reviews' element={<Reviews />} />
         <Route path='/About' element={<About />} />
         <Route path='/Login' element={<Login setIsLoggedIn={setIsLoggedIn} />} />
