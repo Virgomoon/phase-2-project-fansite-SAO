@@ -24,14 +24,14 @@ function Navbar({ isLoggedIn, setIsLoggedIn }) {
             <NavLink to="/" exact="true" className="links">
                 Home
             </NavLink>
-            <NavLink to="/Anime" className="links">
-                Anime
-            </NavLink>
-            <NavLink to="/Manga" className="links">
-                Manga
-            </NavLink>
             <NavLink to="/Characters" className="links">
                 Characters
+            </NavLink>
+            <NavLink to="/Reviews" className="links">
+                Reviews
+            </NavLink>
+            <NavLink to="/About" className="links">
+                About
             </NavLink>
         </div>
             <Button className="nav_button" secondary onClick={handleLogout}>Logout</Button>
