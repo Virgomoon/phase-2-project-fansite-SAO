@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { Navigate } from "react-router-dom";
-import { Card } from "semantic-ui-react";
+import { Navigate, useNavigate } from "react-router-dom";
+import { Card, Item, Image } from "semantic-ui-react";
+// import ItemHolder from "./ItemHolder";
 
-function Home({isLoggedIn, searchData}){
+function Home({isLoggedIn, searchData, setItemDataState}){
     
+    const history = useNavigate()
     if (!isLoggedIn) return <Navigate to="/login" />;
+
 
 const filteredData = searchData.filter((show) => show.title.toLowerCase().includes("Sword Art Online".toLowerCase()));
 
-const movieList = filteredData.filter((media)=> media.type !== "TV")
+// const movieList = filteredData.filter((media)=> media.type !== "TV")
 const seriesList = filteredData.filter((media)=> media.type === "TV").sort((first, second)=> {
     if(first.mal_id > second.mal_id) {
         return 1
@@ -18,12 +21,20 @@ const seriesList = filteredData.filter((media)=> media.type === "TV").sort((firs
     return 0
 });
 
-console.log(seriesList)
-console.log(movieList)
+async function renderSeries(e){
+    let itemInfo = seriesList.filter((show)=> show.mal_id.toString() === e.target.parentNode.id)
+
+    setItemDataState(itemInfo)
+    
+  history('/ItemHolder')
+}
+
+// console.log(seriesList)
+// console.log(movieList)
 
 const fetchedData = seriesList.map((item)=> {
     return(
-        <Card key={item.mal_id}>
+        <Card key={item.mal_id} id={item.mal_id}  onClick={renderSeries}>
             <img src={item.images.jpg.image_url}></img>
             <h3>{item.title}</h3>
         </Card>
