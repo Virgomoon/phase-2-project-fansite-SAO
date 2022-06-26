@@ -12,9 +12,11 @@ import About from './About';
 function App() {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState("")
 
   const [searchData, setSearchData] = useState([])
   const [firstChar, setFirstChar] = useState([])
+  const [reviewData, setReviewData] = useState([])
     
     useEffect(() =>{
         fetch("https://api.jikan.moe/v4/anime?q=sword art online&sfw")
@@ -28,16 +30,22 @@ function App() {
       .then((data)=> setFirstChar(data.data))
   }, []);
 
+    useEffect(()=>{
+      fetch("https://backend-fansite-sao.herokuapp.com/reviews")
+      .then((res)=> res.json())
+      .then((data)=> setReviewData(data))
+    },[]);
+
   return (
     <div className="App">
-      <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+      <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} currentUser={currentUser} />
       <Routes>
         <Route exact path="/" element={<Home isLoggedIn={isLoggedIn} 
         searchData={searchData} />} />
         <Route path='/Characters' element={<Characters firstChar={firstChar} />} />
-        <Route path='/Reviews' element={<Reviews />} />
+        <Route path='/Reviews' element={<Reviews reviewData={reviewData} currentUser={currentUser} />} />
         <Route path='/About' element={<About />} />
-        <Route path='/Login' element={<Login setIsLoggedIn={setIsLoggedIn} />} />
+        <Route path='/Login' element={<Login setIsLoggedIn={setIsLoggedIn} setCurrentUser={setCurrentUser} />} />
       </Routes>
     </div>
   );

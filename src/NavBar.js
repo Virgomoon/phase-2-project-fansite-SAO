@@ -3,7 +3,7 @@ import './css/NavBar.css'
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Button } from 'semantic-ui-react'
 
-function Navbar({ isLoggedIn, setIsLoggedIn }) {
+function Navbar({ isLoggedIn, setIsLoggedIn, currentUser }) {
 
     const history = useNavigate();
 
@@ -12,13 +12,7 @@ function Navbar({ isLoggedIn, setIsLoggedIn }) {
     history("/login");
     }
 
-    console.log(isLoggedIn)
-
-
-
-
-    return (
-        isLoggedIn ?  (
+    const navigator =  isLoggedIn ?  (
         <div className="nav_wrap">
         <div className="nav">
             <NavLink to="/" exact="true" className="links">
@@ -34,9 +28,17 @@ function Navbar({ isLoggedIn, setIsLoggedIn }) {
                 About
             </NavLink>
         </div>
-            <Button className="nav_button" secondary onClick={handleLogout}>Logout</Button>
+            <span>
+            Welcome {currentUser}!
+            </span>
         </div>
-        ) : null
+       ) : null
+
+    return (
+        <>
+            {navigator}
+            <Button className="nav_button" secondary onClick={handleLogout}>Logout</Button>
+        </>
     )
 }
 

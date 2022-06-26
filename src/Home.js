@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
+import { Card } from "semantic-ui-react";
 
 function Home({isLoggedIn, searchData}){
     
@@ -22,18 +23,18 @@ console.log(movieList)
 
 const fetchedData = seriesList.map((item)=> {
     return(
-        <div key={item.mal_id}>
+        <Card key={item.mal_id}>
             <img src={item.images.jpg.image_url}></img>
             <h3>{item.title}</h3>
-        </div>
+        </Card>
     )
     })
 
 
 return (
-    <div>
+    <Card.Group itemsPerRow={3}>
         {fetchedData}
-    </div>
+    </Card.Group>
 )
 
 }

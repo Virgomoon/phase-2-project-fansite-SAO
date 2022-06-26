@@ -3,9 +3,10 @@ import './css/Login.css';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'semantic-ui-react';
 
-function Login({setIsLoggedIn}) {
+function Login({setIsLoggedIn, setCurrentUser}) {
 
     const history = useNavigate();
+    const [userData, setUserData] = useState([])
     const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -18,12 +19,27 @@ function Login({setIsLoggedIn}) {
     });
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
+    setFormData({
+      username: "",
+      password: "",
+    })
 
-    setIsLoggedIn(true);
+    fetch("https://backend-fansite-sao.herokuapp.com/users")
+    .then((res)=> res.json())
+    .then((data)=> setUserData(data))
+    
+    const userSignIn = await userData.find((user)=> user.username === formData.username)
 
-    history("/") 
+    if(userSignIn) {
+      if(userSignIn.password === formData.password)
+      
+      setIsLoggedIn(true);
+      setCurrentUser(userSignIn.username)
+      
+      history("/") 
+    }
   }
 
     return (
@@ -36,6 +52,7 @@ function Login({setIsLoggedIn}) {
                 <input
                 type="text"
                 name="username"
+                required
                 value={formData.username}
                 onChange={handleChange}
                 />
@@ -45,6 +62,7 @@ function Login({setIsLoggedIn}) {
                 <input
                 type="password"
                 name="password"
+                required
                 value={formData.password}
                 onChange={handleChange}
                 />
