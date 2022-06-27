@@ -69,6 +69,7 @@ function Login({setIsLoggedIn, setCurrentUser}) {
                 </label>
                 <Button type="submit">Login</Button>
             </form>
+            <h6 onClick={()=> history('/SignUp')}>Create Account</h6>
         </div>
         )
 

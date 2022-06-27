@@ -8,6 +8,7 @@ import Characters from './Characters';
 import Reviews from './Reviews';
 import About from './About';
 import ItemHolder from './ItemHolder';
+import SignUp from './SignUp';
 
 
 function App() {
@@ -51,6 +52,7 @@ function App() {
         <Route path='/About' element={<About />} />
         <Route path='/Login' element={<Login setIsLoggedIn={setIsLoggedIn} setCurrentUser={setCurrentUser} />} />
         <Route path='/ItemHolder' element={<ItemHolder itemDataState={itemDataState} />}/>
+        <Route path='/SignUp' element={<SignUp />} />
       </Routes>
     </div>
   );
