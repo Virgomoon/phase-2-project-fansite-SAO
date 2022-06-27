@@ -1,5 +1,8 @@
 .reviews {
-    display: flex;
+   
+    display: table-cell;
+    align-items: center;
+    vertical-align: middle;
     color: white;
     height: 100vh;
 }

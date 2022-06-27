@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Button } from "semantic-ui-react";
+import { Button, Item } from "semantic-ui-react";
 import "./css/Reviews.css"
 
 function Reviews({reviewData, currentUser}){
@@ -8,35 +8,42 @@ function Reviews({reviewData, currentUser}){
 
     function handleReviewChange(e) {
         setUserReview(
-            ...userReview,
              e.target.value
           )
+        //   console.log(userReview)
     }
     
     function handleReviewSubmit(e){
         e.preventDefault();
-        let reviewToAdd = ({
-        username: e.target.username,
-        content: e.target.value,
-        })
+       
+        setUserReview("")
 
+        let newReview = ({
+            username: currentUser,
+            content: userReview,
+        })
+        // console.log(currentUser)
+        // console.log(userReview)
         fetch("https://backend-fansite-sao.herokuapp.com/reviews", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify(reviewToAdd),
+            body: JSON.stringify(newReview),
             })
         .then((res)=> res.json())
-        .then((newReview)=> console.log(newReview))
+        .then((newRev)=> console.log(newRev))
     }
 
-    console.log(reviewData)
+    // console.log(reviewData)
     const diplayReviews = reviewData.map((item)=>{
         return (
             <div key={item.id}>
-                <span>{item.username}</span>
-                <p>{item.content}</p>
+            <Item>
+                <Item.Header>{item.username}</Item.Header>
+                <Item.Content>{item.content}</Item.Content>
+            </Item>
+            {currentUser === item.username? <Button>X</Button> : null}
             </div>
         )
     })
@@ -51,7 +58,7 @@ function Reviews({reviewData, currentUser}){
                 type="text"
                 name="leave-review"
                 user={currentUser}
-                value={userReview.value}
+                value={userReview}
                 onChange={handleReviewChange}
                 />
                 </label>
