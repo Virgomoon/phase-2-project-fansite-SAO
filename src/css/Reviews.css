@@ -1,8 +1,42 @@
 .reviews {
-   
-    display: table-cell;
-    align-items: center;
-    vertical-align: middle;
     color: white;
     height: 100vh;
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+    /* display: table-cell;
+    text-align: center;
+    align-items: center;
+    vertical-align: middle;
+    
+     */
 }
+
+.form {
+    /* border: 3px solid brown; */
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.form textarea {
+    height: 200px;
+}
+
+.form button.ui.button{
+    width: 30%;
+    margin-left: 35%;
+    margin-right: 35%;
+}
+
+div {
+    margin-bottom: 1ex;
+}
+
+div.header{
+    color: aqua;
+    font-weight: bold;
+}
+
+div.content{}

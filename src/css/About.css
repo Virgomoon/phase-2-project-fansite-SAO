@@ -1,4 +1,8 @@
 .about {
     color: white;
     height: 100vh;
+    margin: 25% auto;
+    width: 50%;
+    
+    padding: 10px;
 }

@@ -4,9 +4,13 @@ import ItemHolder from "./ItemHolder";
 
 function Characters({firstChar}){
 
+    function handleFullscreen(e){
+        e.target.requestFullscreen()
+    }
+
     const charData = firstChar.map((item)=> {
         return(
-            <Card key={item.character.mal_id}>
+            <Card key={item.character.mal_id} onClick={handleFullscreen}>
                 <img src={item.character.images.jpg.image_url}></img>
                 <h3>{item.character.name}</h3>
             </Card>

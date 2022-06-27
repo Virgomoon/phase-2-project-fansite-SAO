@@ -51,9 +51,10 @@ function Reviews({reviewData, currentUser}){
     return (
         <div className="reviews">
             <h1>Reviews</h1>
-            <form onSubmit={handleReviewSubmit} >
+            <form className="form" onSubmit={handleReviewSubmit} >
                 <label>
                     Leave a review
+                </label>
                 <textarea
                 type="text"
                 name="leave-review"
@@ -61,7 +62,6 @@ function Reviews({reviewData, currentUser}){
                 value={userReview}
                 onChange={handleReviewChange}
                 />
-                </label>
                 <Button type="submit">submit</Button>
             </form>
             {diplayReviews}

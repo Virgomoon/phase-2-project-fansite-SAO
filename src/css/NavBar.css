@@ -12,8 +12,9 @@
 }
 .nav_button{
     position: fixed;
-    /* margin: 1em; */
+    /* margin-top: 15px;  */
     right: 5%;
+    offset-position: top 15px;
 }
 span {
     color: white;

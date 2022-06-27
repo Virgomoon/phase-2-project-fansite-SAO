@@ -31,13 +31,13 @@ function Navbar({ isLoggedIn, setIsLoggedIn, currentUser }) {
             <span>
             Welcome {currentUser}!
             </span>
+            <Button className="nav_button" secondary onClick={handleLogout}>Logout</Button>
         </div>
        ) : null
 
     return (
         <>
             {navigator}
-            <Button className="nav_button" secondary onClick={handleLogout}>Logout</Button>
         </>
     )
 }
