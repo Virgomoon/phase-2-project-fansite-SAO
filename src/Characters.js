@@ -7,11 +7,18 @@ function Characters({firstChar}){
     function handleFullscreen(e){
         e.target.requestFullscreen()
     }
+    
+    // function handleRedirect(url){
+    //     window.open(`${url}`)
+    //     console.log(url)
+    // }
+
+    console.log(firstChar)
 
     const charData = firstChar.map((item)=> {
         return(
-            <Card key={item.character.mal_id} onClick={handleFullscreen}>
-                <img src={item.character.images.jpg.image_url}></img>
+            <Card key={item.character.mal_id} >
+                <img src={item.character.images.jpg.image_url} onClick={handleFullscreen} ></img>
                 <h3>{item.character.name}</h3>
             </Card>
         )
