@@ -21,7 +21,7 @@ function App() {
   const [reviewData, setReviewData] = useState([])
 
   const [itemDataState, setItemDataState] = useState([])
-  console.log(isLoggedIn)
+  // console.log(isLoggedIn)
     
     useEffect(() =>{
         fetch("https://api.jikan.moe/v4/anime?q=sword art online&sfw")
@@ -48,7 +48,7 @@ function App() {
         <Route exact path="/" element={<Home isLoggedIn={isLoggedIn} 
         searchData={searchData} setItemDataState={setItemDataState} />} />
         <Route path='/Characters' element={<Characters firstChar={firstChar} />} />
-        <Route path='/Reviews' element={<Reviews reviewData={reviewData} currentUser={currentUser} />} />
+        <Route path='/Reviews' element={<Reviews reviewData={reviewData} currentUser={currentUser} setReviewData={setReviewData} />} />
         <Route path='/About' element={<About />} />
         <Route path='/Login' element={<Login setIsLoggedIn={setIsLoggedIn} setCurrentUser={setCurrentUser} />} />
         <Route path='/ItemHolder' element={<ItemHolder itemDataState={itemDataState} />}/>

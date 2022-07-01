@@ -5,6 +5,7 @@
     width: 50%;
     border: 3px solid green;
     padding: 10px;
+    overflow-y: scroll;
     /* display: table-cell;
     text-align: center;
     align-items: center;
@@ -39,4 +40,11 @@ div.header{
     font-weight: bold;
 }
 
-div.content{}
+.delete{
+    border-radius: 50%;
+    border: 1px solid red;
+    background-color: rgba(000, 000,000, 0);
+    color: red;
+}
+
+/* div.content{} */

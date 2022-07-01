@@ -1,8 +1,8 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { Button, Item } from "semantic-ui-react";
 import "./css/Reviews.css"
 
-function Reviews({reviewData, currentUser}){
+function Reviews({reviewData, currentUser, setReviewData}){
 
     const [userReview, setUserReview] = useState("")
 
@@ -34,15 +34,30 @@ function Reviews({reviewData, currentUser}){
         .then((newRev)=> console.log(newRev))
     }
 
+    useEffect(()=>{
+        fetch("https://backend-fansite-sao.herokuapp.com/reviews")
+        .then((res)=> res.json())
+        .then((data)=> setReviewData(data))
+      },[handleReviewSubmit]);
+
     // console.log(reviewData)
+
+    function handleDelete(e){
+        console.log(parseInt(e.target.parentNode.id));
+        fetch(`https://backend-fansite-sao.herokuapp.com/reviews/${parseInt(e.target.parentNode.id)}`,{
+            method:"DELETE",
+        }).then(res => res.json())
+        .then(result=> console.log(result))
+    }
+
     const diplayReviews = reviewData.map((item)=>{
         return (
-            <div key={item.id}>
+            <div key={item.id} id={item.id}>
             <Item>
                 <Item.Header>{item.username}</Item.Header>
                 <Item.Content>{item.content}</Item.Content>
             </Item>
-            {currentUser === item.username? <Button>X</Button> : null}
+            {currentUser === item.username? <button className="delete" onClick={handleDelete} >x</button> : null}
             </div>
         )
     })
