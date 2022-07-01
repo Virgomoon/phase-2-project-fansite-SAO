@@ -32,11 +32,11 @@ function Login({setIsLoggedIn, setCurrentUser}) {
     
     const userSignIn = await userData.find((user)=> user.username === formData.username)
 
-    if(userSignIn) {
+     if(userSignIn) {
       if(userSignIn.password === formData.password)
       
-      setIsLoggedIn(true);
-      setCurrentUser(userSignIn.username)
+      await setIsLoggedIn(true);
+      await setCurrentUser(userSignIn.username)
       
       history("/") 
     }

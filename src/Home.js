@@ -43,7 +43,7 @@ const fetchedData = seriesList.map((item)=> {
 
 
 return (
-    <Card.Group itemsPerRow={3}>
+    <Card.Group className="home" itemsPerRow={3}>
         {fetchedData}
     </Card.Group>
 )

@@ -53,7 +53,8 @@ function SignUp(){
 
     return (
         <div className="sign-up">
-            <form onSubmit={handleAddUser}>
+          <h1 className="heading"> Create Account</h1>
+            <form className="form" onSubmit={handleAddUser}>
             <label>
                     Username
                 <input

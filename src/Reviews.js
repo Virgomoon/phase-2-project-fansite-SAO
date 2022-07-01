@@ -10,7 +10,6 @@ function Reviews({reviewData, currentUser}){
         setUserReview(
              e.target.value
           )
-        //   console.log(userReview)
     }
     
     function handleReviewSubmit(e){
