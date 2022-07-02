@@ -1,7 +1,7 @@
 {
   "name": "fansite",
   "version": "0.1.0",
-  "homepage": "https://virgomoon.github.io/phase-2-project-fansite-SAO",
+  "homepage": "https://Virgomoon.github.io/phase-2-project-fansite-SAO",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",

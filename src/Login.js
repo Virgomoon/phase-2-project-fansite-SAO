@@ -3,11 +3,11 @@ import './css/Login.css';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'semantic-ui-react';
 
-function Login({setIsLoggedIn, setCurrentUser}) {
+function Login({ setIsLoggedIn, setCurrentUser }) {
 
-    const history = useNavigate();
-    const [userData, setUserData] = useState([])
-    const [formData, setFormData] = useState({
+  const history = useNavigate();
+  const [userData, setUserData] = useState([])
+  const [formData, setFormData] = useState({
     username: "",
     password: "",
   });
@@ -21,57 +21,68 @@ function Login({setIsLoggedIn, setCurrentUser}) {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    setFormData({
-      username: "",
-      password: "",
-    })
 
-    fetch("https://backend-fansite-sao.herokuapp.com/users")
-    .then((res)=> res.json())
-    .then((data)=> setUserData(data))
-    
-    const userSignIn = await userData.find((user)=> user.username === formData.username)
+    await fetch("https://backend-fansite-sao.herokuapp.com/users")
+      .then((res) => res.json())
+      .then((data) => {
+        const userSignIn = data.find((user) => user.username === formData.username)
+        setUserData(data)
+        if(!userSignIn){
+          setFormData({
+          username: "",
+          password: "",
+        })
+        return
+      }
+        if (userSignIn.password  === formData.password) {
 
-     if(userSignIn) {
-      if(userSignIn.password === formData.password)
-      
-      await setIsLoggedIn(true);
-      await setCurrentUser(userSignIn.username)
-      
-      history("/") 
-    }
+          setIsLoggedIn(true);
+          setCurrentUser(userSignIn.username)
+
+          history("/")
+
+        }
+        setFormData({
+          username: "",
+          password: "",
+        })
+      })
+
+
+
+    // if(userSignIn) {
   }
 
-    return (
-        <div className="login_screen">
-                <h1>Fansite SAO</h1>
-                <h3>The Sword Art Online Fansite</h3>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    Username
-                <input
-                type="text"
-                name="username"
-                required
-                value={formData.username}
-                onChange={handleChange}
-                />
-                </label>
-                <label>
-                    Password
-                <input
-                type="password"
-                name="password"
-                required
-                value={formData.password}
-                onChange={handleChange}
-                />
-                </label>
-                <Button type="submit">Login</Button>
-            </form>
-            <h3 onClick={()=> history('/SignUp')}>Create Account</h3>
-        </div>
-        )
+  return (
+    <div className="login_screen">
+      <h1>Fansite SAO</h1>
+      <h3>The Sword Art Online Fansite</h3>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Username
+          <input
+            type="text"
+            name="username"
+            required
+            value={formData.username}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          Password
+          <input
+            type="password"
+            name="password"
+            required
+            value={formData.password}
+            onChange={handleChange}
+          />
+        </label>
+        <Button type="submit">Login</Button>
+      </form>
+      <h3 onClick={() => history('/SignUp')}>Create Account</h3>
+    </div>
+  )
 
 }
 
