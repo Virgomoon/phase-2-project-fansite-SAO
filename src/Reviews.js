@@ -21,8 +21,7 @@ function Reviews({reviewData, currentUser, setReviewData}){
             username: currentUser,
             content: userReview,
         })
-        // console.log(currentUser)
-        // console.log(userReview)
+        
         fetch("https://backend-fansite-sao.herokuapp.com/reviews", {
             method: "POST",
             headers: {
@@ -39,8 +38,6 @@ function Reviews({reviewData, currentUser, setReviewData}){
         .then((res)=> res.json())
         .then((data)=> setReviewData(data))
       },[handleReviewSubmit]);
-
-    // console.log(reviewData)
 
     function handleDelete(e){
         console.log(parseInt(e.target.parentNode.id));

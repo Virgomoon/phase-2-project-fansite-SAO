@@ -1,19 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { Card } from "semantic-ui-react";
-import ItemHolder from "./ItemHolder";
+import "./css/Characters.css"
 
 function Characters({firstChar}){
 
     function handleFullscreen(e){
         e.target.requestFullscreen()
     }
-    
-    // function handleRedirect(url){
-    //     window.open(`${url}`)
-    //     console.log(url)
-    // }
-
-    console.log(firstChar)
 
     const charData = firstChar.map((item)=> {
         return(
@@ -25,12 +18,12 @@ function Characters({firstChar}){
         })
 
     return (
-        <>
+        <div className="characters">
             <p>Characters</p>
         <Card.Group itemsPerRow={3}>
             {charData}
         </Card.Group>
-        </>
+        </div>
         )
 }
 

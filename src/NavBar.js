@@ -14,20 +14,20 @@ function Navbar({ isLoggedIn, setIsLoggedIn, currentUser }) {
 
     const navigator =  isLoggedIn ?  (
         <div className="nav_wrap">
-        <div className="nav">
-            <NavLink to="/" exact="true" className="links">
-                Home
-            </NavLink>
-            <NavLink to="/Characters" className="links">
-                Characters
-            </NavLink>
-            <NavLink to="/Reviews" className="links">
-                Reviews
-            </NavLink>
-            <NavLink to="/About" className="links">
-                About
-            </NavLink>
-        </div>
+            <div className="nav">
+                <NavLink to="/" exact="true" className={({ isActive }) => (isActive ? "link-active" : "link")}>
+                    Home
+                </NavLink>
+                <NavLink to="/Characters" className={({ isActive }) => (isActive ? "link-active" : "link")}>
+                    Characters
+                </NavLink>
+                <NavLink to="/Reviews" className={({ isActive }) => (isActive ? "link-active" : "link")}>
+                    Reviews
+                </NavLink>
+                <NavLink to="/About" className={({ isActive }) => (isActive ? "link-active" : "link")}>
+                    About
+                </NavLink>
+            </div>
             <span>
             Welcome {currentUser}!
             </span>

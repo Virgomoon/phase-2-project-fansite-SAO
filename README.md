@@ -28,6 +28,8 @@ Click on any of your favorite characters photo to get an up close view. press es
 
 Enter a review of the show. It will be posted after you press submit. The person who is logged in can delete their own comments but no one else's.
 
+use any sign on found at fansite SAO backend site to see a delete button attached to comment.
+
 ### About
 
 See a short description of the website by it's creator.

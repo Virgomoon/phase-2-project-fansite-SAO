@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-import { Card, Item, Image } from "semantic-ui-react";
-// import ItemHolder from "./ItemHolder";
+import { Card } from "semantic-ui-react";
 
 function Home({isLoggedIn, searchData, setItemDataState}){
     
@@ -11,7 +10,6 @@ function Home({isLoggedIn, searchData, setItemDataState}){
 
 const filteredData = searchData.filter((show) => show.title.toLowerCase().includes("Sword Art Online".toLowerCase()));
 
-// const movieList = filteredData.filter((media)=> media.type !== "TV")
 const seriesList = filteredData.filter((media)=> media.type === "TV").sort((first, second)=> {
     if(first.mal_id > second.mal_id) {
         return 1
@@ -29,9 +27,6 @@ async function renderSeries(e){
   history('/ItemHolder')
 }
 
-// console.log(seriesList)
-// console.log(movieList)
-
 const fetchedData = seriesList.map((item)=> {
     return(
         <Card key={item.mal_id} id={item.mal_id}  onClick={renderSeries}>
@@ -40,7 +35,6 @@ const fetchedData = seriesList.map((item)=> {
         </Card>
     )
     })
-
 
 return (
     <Card.Group className="home" itemsPerRow={3}>

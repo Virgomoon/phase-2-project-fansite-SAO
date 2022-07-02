@@ -7,9 +7,14 @@
     margin: auto;
     padding-left: 5px;
 }
-.links{
+.link{
+    color: white;
     margin: 1em;
 }
+.link-active{
+    margin: 1em;
+}
+
 .nav_button{
     position: fixed;
     /* margin-top: 15px;  */

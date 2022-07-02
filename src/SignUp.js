@@ -5,10 +5,6 @@ import { Button } from 'semantic-ui-react';
 
 function SignUp(){
 
-    // const [addUser, setAddUser] = useState({
-    //     username: "",
-    //     password: "",
-    //   })
     const history = useNavigate()
     const [newUser, setNewUser] = useState({
         username: "",
@@ -29,8 +25,6 @@ function SignUp(){
             username: e.target.username.value,
             password: e.target.password.value,
         })
-
-        // setAddUser(newAdd)
 
         setNewUser({
             username: "",
@@ -77,6 +71,7 @@ function SignUp(){
                 </label>
             <Button>Submit</Button>
             </form>
+            <Button onClick={()=> history("/Login")}>Go Back</Button>
         </div>
     )
 

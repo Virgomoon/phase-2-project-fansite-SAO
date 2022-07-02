@@ -47,10 +47,6 @@ function Login({ setIsLoggedIn, setCurrentUser }) {
           password: "",
         })
       })
-
-
-
-    // if(userSignIn) {
   }
 
   return (

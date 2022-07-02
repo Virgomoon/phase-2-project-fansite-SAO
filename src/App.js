@@ -21,7 +21,7 @@ function App() {
   const [reviewData, setReviewData] = useState([])
 
   const [itemDataState, setItemDataState] = useState([])
-  // console.log(isLoggedIn)
+  
     
     useEffect(() =>{
         fetch("https://api.jikan.moe/v4/anime?q=sword art online&sfw")
