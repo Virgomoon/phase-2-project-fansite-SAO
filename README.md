@@ -1,3 +1,38 @@
+# Welcome to Fansite SAO
+
+this is a fansite dedicated to the "Sword Art Online" anime.
+
+It is hosted on github pages at [fansite SAO](https://virgomoon.github.io/phase-2-project-fansite-SAO/)
+
+the backend is hosted at [fansite SAO backend](https://backend-fansite-sao.herokuapp.com/)
+
+# Features of the site
+
+### Sign up
+
+click create account to navigate to the sign up page. enter a username and password. Submit to redirect to login page.
+
+### Login
+
+Enter newly created username and password to log into the app.
+
+### Home page 
+
+Click on any season of the series to see a synopsis page. Click go back button to return home.
+
+### Characters
+
+Click on any of your favorite characters photo to get an up close view. press esc to go back.
+
+### Reviews
+
+Enter a review of the show. It will be posted after you press submit. The person who is logged in can delete their own comments but no one else's.
+
+### About
+
+See a short description of the website by it's creator.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
